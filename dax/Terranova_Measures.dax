@@ -1,0 +1,83 @@
+// =============================================================================
+// Terranova 100 4G - Power Pivot (DAX) measures
+// Model   : fct_Milestones (fact) + dim_Site + dim_Milestone + dim_Calendar
+//           + param_Control (no relationship)
+// =============================================================================
+
+// ---- Parameters (read from the Control sheet through param_Control) ---------
+Status Date = MAX ( param_Control[StatusDate] )
+Green Threshold = MAX ( param_Control[GreenThr] )
+Amber Threshold = MAX ( param_Control[AmberThr] )
+
+// ---- Volume and quality ------------------------------------------------------
+Sites = DISTINCTCOUNT ( fct_Milestones[SiteID] )
+Milestone Records = COUNTROWS ( fct_Milestones )
+Milestones Completed = SUM ( fct_Milestones[CompletedFlag] )
+Milestones Late = SUM ( fct_Milestones[LateFlag] )
+Completion % = DIVIDE ( [Milestones Completed], [Milestone Records] )
+Late % of Completed = DIVIDE ( [Milestones Late], [Milestones Completed] )
+Avg Slip Days = DIVIDE ( SUM ( fct_Milestones[SlipDaysNum] ), [Milestones Completed] )
+
+// ---- Earned value at the status date ----------------------------------------
+BAC USD = SUM ( fct_Milestones[MilestoneWeightUSD] )
+
+PV @ Status USD =
+CALCULATE (
+    [BAC USD],
+    FILTER ( ALL ( dim_Calendar[Date] ), dim_Calendar[Date] <= [Status Date] )
+)
+
+EV @ Status USD =
+CALCULATE (
+    [BAC USD],
+    USERELATIONSHIP ( fct_Milestones[FinishReal], dim_Calendar[Date] ),
+    FILTER ( ALL ( dim_Calendar[Date] ), dim_Calendar[Date] <= [Status Date] )
+)
+
+SV @ Status USD = [EV @ Status USD] - [PV @ Status USD]
+SPI @ Status = DIVIDE ( [EV @ Status USD], [PV @ Status USD] )
+
+RAG Status =
+VAR _spi = [SPI @ Status]
+RETURN
+    IF (
+        ISBLANK ( _spi ), "N/A",
+        IF ( _spi >= [Green Threshold], "GREEN",
+            IF ( _spi >= [Amber Threshold], "AMBER", "RED" ) )
+    )
+
+Sites RED =
+COUNTROWS (
+    FILTER (
+        VALUES ( dim_Site[SiteID] ),
+        NOT ISBLANK ( [SPI @ Status] ) && [SPI @ Status] < [Amber Threshold]
+    )
+)
+
+// ---- Monthly phasing and S-curve (put dim_Calendar[YearMonth] on rows) -------
+PV in Month USD = [BAC USD]
+
+EV in Month USD =
+VAR _cut = [Status Date]
+RETURN
+    CALCULATE (
+        [BAC USD],
+        USERELATIONSHIP ( fct_Milestones[FinishReal], dim_Calendar[Date] ),
+        dim_Calendar[Date] <= _cut
+    )
+
+Cumulative PV USD =
+VAR _last = MAX ( dim_Calendar[Date] )
+RETURN
+    CALCULATE ( [BAC USD], FILTER ( ALL ( dim_Calendar ), dim_Calendar[Date] <= _last ) )
+
+Cumulative EV USD =
+VAR _cut = MIN ( MAX ( dim_Calendar[Date] ), [Status Date] )
+RETURN
+    CALCULATE (
+        [BAC USD],
+        USERELATIONSHIP ( fct_Milestones[FinishReal], dim_Calendar[Date] ),
+        FILTER ( ALL ( dim_Calendar ), dim_Calendar[Date] <= _cut )
+    )
+
+SPI Cumulative = DIVIDE ( [Cumulative EV USD], [Cumulative PV USD] )
