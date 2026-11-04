@@ -1,4 +1,4 @@
-<h1 align="center">Terranova 4G 100 — Executive Project Control Dashboard</h1>
+<h1 align="center">Executive Project Control Dashboard</h1>
 
 <p align="center">
   <b>Earned value, cost, schedule and risk analytics for a 100-site rural 4G rollout</b><br>
@@ -6,34 +6,31 @@
 </p>
 
 <p align="center">
-  <img alt="Excel" src="https://img.shields.io/badge/Microsoft%20Excel-2019%20%7C%20365-217346?logo=microsoftexcel&logoColor=white">
+  <img alt="Excel" src="https://img.shields.io/badge/Microsoft%20Excel-2021%20%7C%20365-217346?logo=microsoftexcel&logoColor=white">
   <img alt="VBA" src="https://img.shields.io/badge/VBA-automation-1F3864">
   <img alt="Power Query" src="https://img.shields.io/badge/Power%20Query-M-F2C811?logoColor=black">
   <img alt="Power Pivot" src="https://img.shields.io/badge/Power%20Pivot-DAX-2E75B6">
-  <img alt="Formulas" src="https://img.shields.io/badge/formulas-31%2C763-blue">
-  <img alt="Integrity" src="https://img.shields.io/badge/model%20integrity-6%2F6%20OK-brightgreen">
 </p>
+
+![Executive Project Control Dashboard](./assets/00summary.png)
 
 ---
 
 ## Table of contents
 
-1. [Project title & overview](#1-project-title--overview)
+1. [Project overview](#1-project-overview)
 2. [Role & responsibilities](#2-role--responsibilities)
-3. [Challenge / problem](#3-challenge--problem)
-4. [Actions / process](#4-actions--process)
+3. [Challenge](#3-challenge)
+4. [Process](#4-process)
 5. [Results / impact](#5-results--impact)
 6. [Visuals / artifacts](#6-visuals--artifacts)
 7. [Lessons learned](#7-lessons-learned)
-8. [Repository structure & how to use](#8-repository-structure--how-to-use)
-9. [Data, assumptions & limitations](#9-data-assumptions--limitations)
-10. [Author](#10-author)
 
 ---
 
-## 1. Project title & overview
+## 1. Project overview
 
-**Terranova 4G 100** is a formula-driven Excel decision-support system that consolidates the cost, schedule and risk data of a **100-site rural 4G rollout** (4 provinces, 11 milestones per site, 27 cost components) into one auditable workbook. A single province filter, a status-date control and a scenario selector re-calculate every KPI, narrative and chart in real time.
+**Executive Project Control Dashboard** is a formula-driven Excel decision-support system that consolidates the cost, schedule and risk data of a **100-site rural 4G rollout** (4 provinces, 11 milestones per site, 27 cost components) into one auditable workbook. A single province filter, a status-date control and a scenario selector re-calculate every KPI, narrative and chart in real time.
 
 | | |
 |---|---|
@@ -54,7 +51,7 @@ flowchart LR
     F --> H[Province PDF reports<br/>KPI_Log history]
 ```
 
-![Solution architecture](docs/images/01_solution_architecture.png)
+![Solution architecture](assets/01_solution_architecture.png)
 
 ---
 
@@ -72,7 +69,7 @@ flowchart LR
 
 ---
 
-## 3. Challenge / problem
+## 3. Challenge
 
 Programme managers had to answer, quickly and defensibly: **how much are we investing and where? Are we on schedule? Which milestones and sites are the problem? What happens to the budget if FX or risk assumptions move?** — from data spread over 18 normalised tables.
 
@@ -90,7 +87,7 @@ Programme managers had to answer, quickly and defensibly: **how much are we inve
 
 ---
 
-## 4. Actions / process
+## 4. Process
 
 ### 4.1 Methodology
 
@@ -123,7 +120,7 @@ PMBOK-aligned planning, **earned value management**, **Kimball star-schema** mod
 
 ### 4.3 Formula toolkit
 
-`INDEX/MATCH` (≈ 11,800 pairs) · `SUMIFS` · `COUNTIFS` · `AVERAGEIFS` · `MAXIFS` · `SUMIF` / `COUNTIF` · `IF` / `IFERROR` / `SWITCH` / `AND` / `OR` · `LARGE` / `RANK` / `PERCENTRANK` · `EDATE` / `EOMONTH` · `TEXT` for dynamic narratives. Classic functions only — no dynamic arrays — so the file runs on Excel 2019 and Microsoft 365.
+`INDEX/MATCH` (≈ 11,800 pairs) · `SUMIFS` · `COUNTIFS` · `AVERAGEIFS` · `MAXIFS` · `SUMIF` / `COUNTIF` · `IF` / `IFERROR` / `SWITCH` / `AND` / `OR` · `LARGE` / `RANK` / `PERCENTRANK` · `EDATE` / `EOMONTH` · `TEXT` for dynamic narratives. Classic functions only — no dynamic arrays — so the file runs on Excel 2021 and Microsoft 365.
 
 ### 4.4 Key decisions
 
@@ -137,11 +134,12 @@ PMBOK-aligned planning, **earned value management**, **Kimball star-schema** mod
 
 ### 4.5 Visual Basic automation
 
-Full module: [`vba/modTerranovaDashboard.bas`](vba/modTerranovaDashboard.bas) · event handlers: [`vba/EventHandlers.txt`](vba/EventHandlers.txt)
+- Full module: [`vba/modTerranovaDashboard.bas`](vba/modTerranovaDashboard.bas)
+- Event handlers: [`vba/Sheet_Control_Event_Handler.cls`](vba/Sheet_Control_Event_Handler.cls) · [`vba/ThisWorkbook.cls`](vba/ThisWorkbook.cls)
 
 | Procedure | Purpose |
 |---|---|
-| `RunMonthlyReportCycle` | Master routine — assign to a button on `Control` |
+| `RunMonthlyReportCycle` | Master routine — assign to "Update" button on `Control` Sheet |
 | `RefreshAndValidate` / `ModelIsHealthy` | Refresh connections, recalculate, read the six integrity checks |
 | `LogKpiSnapshot` | Append date-stamped KPIs to an auto-created `KPI_Log` sheet |
 | `ExportProvinceReports` | One PDF per province filter (All + each province), then restore the filter |
@@ -164,7 +162,7 @@ End Sub
 
 Queries: [`powerquery/Terranova_Queries.m`](powerquery/Terranova_Queries.m) · Measures: [`dax/Terranova_Measures.dax`](dax/Terranova_Measures.dax)
 
-![Star schema](docs/images/02_star_schema.png)
+![Star schema](assets/02_star_schema.png)
 
 ```mermaid
 erDiagram
@@ -190,7 +188,7 @@ CALCULATE (
 )
 ```
 
-### 4.7 New table — `Site_Performance_Scorecard`
+### 4.7 Power Query Table: `Site_Performance_Scorecard`
 
 One row per site, sorted worst-first so the top rows are the recovery watch-list (22 columns: keys, milestone counts, slip statistics, `BAC_USD`, `PV_USD`, `EV_USD`, `SV_USD`, `SPI`, `RAG`, `RolloutWave`, `InvestmentRank`). Reconciles to the dashboard: ΣPV = 8,201,089 · ΣEV = 7,627,340.
 
@@ -206,7 +204,7 @@ One row per site, sorted worst-first so the top rows are the recovery watch-list
 
 ---
 
-## 5. Results / impact
+## 5. Results
 
 All figures are computed from the workbook at the **31-Dec-2026** status date.
 
@@ -234,42 +232,30 @@ All figures are computed from the workbook at the **31-Dec-2026** status date.
 | **Risk exposure** | Moderate **+USD 1.32M (+11.2%)** · Severe **+USD 3.42M (+29.1%)** |
 | **Reliable model** | 6 / 6 reconciliation checks pass to the cent |
 
-![SPI by rollout wave](docs/images/03_spi_by_wave.png)
-
-### Efficiency benefits (design-based estimates)
-
-> The estimates below are not measured values. Replace them with your own baseline before external use.
-
-| Benefit | Before | After |
-|---|---|---|
-| Periodic report production | ≈ 1.5–2 working days | < 30 minutes |
-| Province-specific executive reports | ≈ 2 hours for 5 versions | ≈ 2 minutes |
-| Consolidation errors | Manual cross-checks | 0 variance across 6 automated checks |
-| Scenario re-runs | Rebuild per case | 1 drop-down selection |
+![SPI by rollout wave](assets/03_spi_by_wave.png)
 
 ---
 
-## 6. Visuals / artifacts
+## 6. Visuals & Artifacts
 
-Add your screenshots to `docs/images/` using the names below (the three diagrams above already exist).
+![Control Panel](./assets/02control_panel.png)
 
-| File | Content | Skill it proves |
-|---|---|---|
-| `04_exec_dashboard_all.png` | `Exec_Dashboard`, filter = All | Dashboard design |
-| `05_exec_dashboard_province.png` | Same page, one province selected | Interactivity |
-| `06_evm_scurve.png` | S-curve and SPI snapshot | Earned value |
-| `07_cost_pareto.png` | Pareto of cost drivers | 80/20 analysis |
-| `08_schedule_heatmap.png` | Province × milestone lateness | Bottleneck analysis |
-| `09_control_integrity.png` | `Control` with six checks OK | Quality assurance |
-| `10_site_profile.png` | Single-site card | Drill-down |
-| `11_scenario.png` | Scenario comparison | Risk analysis |
-| `12_power_query.png` | Applied steps in Power Query | ETL |
-| `13_power_pivot_diagram.png` | Diagram view of the star schema | Data modelling |
-| `14_dax_measures.png` | Measure manager | DAX |
-| `15_vba_editor.png` | VBA project and code | Automation |
-| `16_reports_output.png` | `Reports` folder + `KPI_Log` | Report generation |
-| `17_scorecard_table.png` | `Site_Performance_Scorecard` with RAG | New analytical table |
-| `18_demo.gif` | 15–20 s screen recording: change filter and scenario, run report | End-to-end demo |
+![Executive Dashboard](./assets/03exec_dashboard.png)
+
+![Executive Dashboard filtered by Province](./assets/04exec_dashboard_Pontevedra.png)
+
+![Cost Analysis](./assets/05cost_analysis.png)
+
+![Schedule Analysis](./assets/06schedule_analysis.png)
+
+![S-curve](./assets/07scurve.png)
+
+![Site Profile](./assets/08site_profile.png)
+
+![tblSites](./assets/10tblSites.png)
+
+![Power Pivot Relationship Diagram](.assets/12power_pivot_relationship_diagram.png)
+
 
 ---
 
@@ -296,51 +282,17 @@ Add your screenshots to `docs/images/` using the names below (the three diagrams
 | Risk management | Quantified FX and contingency exposure |
 | Governance & audit | Reconciliation checks, documented assumptions, transparent formulas |
 
-**Next steps:** recovery plan for the 25 Q4-wave sites · escalate the Negotiation → Infrastructure → Transmission sequence · add actual costs for CPI and EAC · publish the scorecard as a weekly watch-list.
+
+## 🔖 Tags
+
+`project-management` `ms excel` `power pivot` `power query` `data analysis` `dax` `visual basic` `executive dashboard` `telecommunications` `4g-network`
 
 ---
 
-## 8. Repository structure & how to use
+<div align="center">
 
-```text
-.
-├── README.md
-├── Terranova_Excel_Dashboard.xlsx          # save as .xlsm to run the macros
-├── Terranova_Excel_Dashboard_Project_Description.docx
-├── vba/
-│   ├── modTerranovaDashboard.bas           # import into the VBA editor
-│   └── EventHandlers.txt                   # paste into ThisWorkbook and the Control sheet
-├── powerquery/
-│   └── Terranova_Queries.m                 # one block per query
-├── dax/
-│   └── Terranova_Measures.dax
-└── docs/
-    └── images/
-```
+**⭐ If you find this project useful, please consider giving it a star! ⭐**
 
-1. Open the workbook and **Save As → Excel Macro-Enabled Workbook (.xlsm)**.
-2. `Alt + F11` → **File › Import File…** → `vba/modTerranovaDashboard.bas`; paste `EventHandlers.txt` into `ThisWorkbook` and the `Control` sheet module.
-3. Add a button on `Control` and assign `RunMonthlyReportCycle`.
-4. Power Query: **Data › Get Data › Blank Query**, paste each block of `Terranova_Queries.m`, rename the query as in its banner and load as described in the file header.
-5. Power Pivot (Excel 2019 / 365 Windows): create the relationships and paste the measures from `Terranova_Measures.dax`.
-6. Reconcile: BAC 11,738,833 · PV 8,201,089 · EV 7,627,340 · SPI 0.930 · 29 RED sites.
+Made by Fernando Muñoz
 
-> **Requirements:** Microsoft Excel 2019 or Microsoft 365 for Windows (MAXIFS and SWITCH need 2019+; Power Pivot needs a Windows edition that includes it).
-
----
-
-## 9. Data, assumptions & limitations
-
-- Costs are EUR unit costs × **1.16 USD/EUR** (editable on `Control`); the Scenario sheet applies illustrative FX and contingency assumptions that should be replaced with your own.
-- Earned value spreads each site budget **equally over its 11 milestones**; it is a schedule proxy, not a cost-loaded or physical-progress measure. No actual costs are included, so CPI and EAC are not calculated.
-- `RolloutWave` is the site-code prefix (Q1–Q4).
-- Confirm that the data may be published and remove any client-confidential information before pushing this repository to a public GitHub project.
-
----
-
-## 10. Author
-
-**Fernando Muñoz** — Project management, data analytics and automation · FxMr Consulting
-✉ fxmr.consult@gmail.com
-
-<sub>© 2026 Fernando Muñoz. Add a `LICENSE` file to define the terms of reuse.</sub>
+</div>
