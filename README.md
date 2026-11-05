@@ -134,7 +134,7 @@ All figures are computed from the workbook at the **illustrative 31-Dec-2026 sta
 | **Reliable model** | 6 / 6 reconciliation checks pass to the cent |
 
 <p align="center">
-  <img src="./assets/03_spi_by_rollout_wave.png" width="800" alt="Bar chart of schedule performance index by rollout wave">
+  <img src="./assets/03_spi_by_wave.png" width="800" alt="Bar chart of schedule performance index by rollout wave">
 </p>
 
 ### Benefits for the organization
