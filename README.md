@@ -353,7 +353,7 @@ One row per site, sorted worst-first so the top rows form the recovery watch-lis
 | Advanced Excel formulas | ≈ 31,800 formulas; `SUMIFS`, `COUNTIFS`, `MAXIFS`, `INDEX/MATCH`, dynamic narratives with `TEXT` | Analytical sheets |
 | Dashboard design | One filter drives 6 tiles, 16 charts and an auto-written executive summary | `Exec_Dashboard` |
 | Power Query (M) | Blank-to-null typing, parameter queries, dimension and calendar tables | [`powerquery/Terranova_Queries.m`](./powerquery/Terranova_Queries.m) |
-| Data modeling | Kimball star schema with an inactive `FinishReal` relationship | [Power Pivot diagram](#9-power-pivot-relationship-diagram) |
+| Data modeling | Kimball star schema with an inactive `FinishReal` relationship | [Power Pivot diagram](./assets/02_star_schema.png) |
 | DAX | `USERELATIONSHIP`, `CALCULATE`, cumulative PV / EV | [`dax/Terranova_Measures.dax`](./dax/Terranova_Measures.dax) |
 | VBA | Guarded refresh → validate → log → export cycle, sheet protection, input validation | [`vba/modTerranovaDashboard.bas`](./vba/modTerranovaDashboard.bas) |
 | Data quality | Six reconciliation checks to the cent, surfaced as a banner | `Control` sheet |
