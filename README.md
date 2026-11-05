@@ -48,7 +48,7 @@
 
 | | |
 |---|---|
-| **Download** | [`workbook/Terranova_Executive_Project_Control_Dashboard.xlsm`](./workbook/Terranova_Executive_Project_Control_Dashboard.xlsm) or the [latest release](https://github.com/YOUR-USERNAME/terranova-executive-project-control-dashboard/releases/latest) |
+| **Download** | [`docs/Terranova_Excel_Dashboard.xlsm`](./docs/Terranova_Excel_Dashboard.xlsm) |
 | **Requirements** | Excel 2021 or Microsoft 365 for Windows (`MAXIFS` needs Excel 2019 or later); Power Pivot / Data Model enabled; macros enabled for the automation |
 | **Macro safety** | The VBA is unsigned. Every module is included as plain text in [`/vba`](./vba) so you can read it before enabling macros |
 
