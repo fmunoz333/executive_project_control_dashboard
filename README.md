@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img src="./assets/00-hero-summary.png" width="900" alt="Executive Project Control Dashboard showing six KPI tiles, SPI 0.93 AMBER, the province filter and the auto-generated executive summary">
+  <img src="./assets/00summary.png" width="900" alt="Executive Project Control Dashboard summary">
 </p>
 
 > **What it does:** one province filter, one status date and one scenario selector recalculate
@@ -31,52 +31,20 @@
 
 ## Table of contents
 
-- [Demo](#demo)
-- [Get the workbook and quick start](#get-the-workbook-and-quick-start)
 - [Project overview](#project-overview)
-- [Role and responsibilities](#role-and-responsibilities)
+- [Role and Responsibilities](#role-and-responsibilities)
 - [Challenge and design response](#challenge-and-design-response)
-- [Results & impact](#results--impact)
+- [Results](#results)
 - [Dashboard tour](#dashboard-tour)
 - [Technical deep dive](#technical-deep-dive)
 - [Assumptions and limitations](#assumptions-and-limitations)
 - [Lessons learned and roadmap](#lessons-learned-and-roadmap)
 - [Skills and evidence](#skills-and-evidence)
-- [Repository structure](#repository-structure)
-- [License, data and security notes](#license-data-and-security-notes)
 - [Contact](#contact)
 
 ---
 
-## Demo
-
-Excel cannot run in a browser, so this short recording is the live demo: changing the province filter and the status date, and watching every KPI, narrative and chart update.
-
-<p align="center">
-  <img src="./assets/demo-province-filter.gif" width="900" alt="Animated demo: selecting a province in the Executive Dashboard updates the KPI tiles, executive summary and charts">
-</p>
-
----
-
-## Get the workbook and quick start
-
-| | |
-|---|---|
-| **Download** | [`workbook/Terranova_Executive_Project_Control_Dashboard.xlsm`](./workbook/Terranova_Executive_Project_Control_Dashboard.xlsm) or the [latest release](https://github.com/YOUR-USERNAME/terranova-executive-project-control-dashboard/releases/latest) |
-| **Requirements** | Excel 2021 or Microsoft 365 for Windows (`MAXIFS` needs Excel 2019 or later); Power Pivot / Data Model enabled; macros enabled for the automation |
-| **Macro safety** | The VBA is unsigned. Every module is included as plain text in [`/vba`](./vba) so you can read it before enabling macros |
-
-**Quick start (about 3 minutes)**
-
-1. Download the `.xlsm` file and open it. Enable macros when prompted (File → Options → Trust Center), or review [`/vba`](./vba) first.
-2. Open the **`Control`** sheet and confirm the banner reads **MODEL OK** (six integrity checks).
-3. Go to **`Exec_Dashboard`** and change the **province filter**. Every tile, narrative and chart updates.
-4. Back on `Control`, change the **status date**, the **on-time tolerance** or the **scenario**, and compare the results.
-5. Press the **Update** button to run the full reporting cycle: refresh, validate, log, export PDFs.
-
----
-
-## Project overview
+## Project Overview
 
 **Executive Project Control Dashboard** is a formula-driven Excel decision-support system. It consolidates the cost, schedule and risk data of a **100-site rural 4G rollout** (4 provinces, 11 milestones per site, 27 cost components) into one auditable workbook.
 
@@ -99,13 +67,13 @@ flowchart LR
     F --> H[Province PDF reports<br/>KPI_Log history]
 ```
 
-**Context.** This is an independent portfolio case study built on a realistic rollout dataset. <!-- VERIFY BEFORE PUBLISHING: confirm the dataset is synthetic/anonymized and contains no employer (CNT EP) data. Edit this sentence to match the truth. --> The dataset is non-confidential and contains no employer data; see [License, data and security notes](#license-data-and-security-notes).
+**Context:** This is an independent portfolio case study built on a realistic rollout dataset. The dataset is non-confidential and contains no employer data.
 
 ---
 
-## Role and responsibilities
+## Role and Responsibilities
 
-I acted as **project manager and dashboard developer**, end to end: design, planning, execution and recurring reporting based on new findings and conclusions.
+I acted as **project manager and data analyst**, end to end: design, planning, execution and recurring reporting based on new findings and conclusions.
 
 | Area | What I did |
 |---|---|
@@ -135,7 +103,7 @@ Program managers had to answer, quickly and defensibly: **how much are we invest
 
 ---
 
-## Results & impact
+## Results
 
 All figures are computed from the workbook at the **illustrative 31-Dec-2026 status date**.
 
@@ -166,7 +134,7 @@ All figures are computed from the workbook at the **illustrative 31-Dec-2026 sta
 | **Reliable model** | 6 / 6 reconciliation checks pass to the cent |
 
 <p align="center">
-  <img src="./assets/03-spi-by-rollout-wave.png" width="800" alt="Bar chart of schedule performance index by rollout wave: the Q4 wave is far below 1.0 while the other three waves are at or near 1.0">
+  <img src="./assets/03_spi_by_rollout_wave.png" width="800" alt="Bar chart of schedule performance index by rollout wave">
 </p>
 
 ### Benefits for the organization
@@ -185,31 +153,29 @@ All figures are computed from the workbook at the **illustrative 31-Dec-2026 sta
 ## Dashboard tour
 
 ### 1. Control panel: parameters and integrity checks
-<img src="./assets/04-control-panel.png" width="900" alt="Control sheet with status date, on-time tolerance, FX rate, SPI thresholds and six integrity checks showing OK">
+<img src="./assets/02control_panel.png" width="900" alt="Control sheet with status date, on-time tolerance, and integrity checks">
 
 ### 2. Executive dashboard: six KPI tiles and an auto-generated summary
-<img src="./assets/05-executive-dashboard.png" width="900" alt="Executive dashboard for all provinces with six KPI tiles, narrative summary and charts">
+<img src="./assets/03exec_dashboard.png" width="900" alt="Executive dashboard for all provinces with KPI tiles">
 
 ### 3. Same dashboard filtered by province (Pontevedra)
-<img src="./assets/06-executive-dashboard-pontevedra.png" width="900" alt="Executive dashboard filtered to Pontevedra, with every KPI and chart recalculated for that province">
+<img src="./assets/04_exec_dashboard_Pontevedra.png" width="900" alt="Executive dashboard filtered to Pontevedra">
 
 ### 4. Cost analysis: province × domain matrix, Pareto of 27 components, Top-10 sites
 <img src="./assets/07-cost-analysis.png" width="900" alt="Cost analysis sheet with a province by domain matrix, a Pareto chart of cost components and a Top-10 sites chart">
 
 ### 5. Schedule analysis: milestone scorecard, lateness heat-map, slip distribution
-<img src="./assets/08-schedule-analysis.png" width="900" alt="Schedule analysis sheet with a milestone scorecard, a lateness heat-map and a slip distribution chart">
+<img src="./assets/06schedule_analysis.png" width="900" alt="Schedule analysis sheet with a milestone scorecard">
 
 ### 6. EVM S-curve: planned value vs earned value
-<img src="./assets/09-s-curve.png" width="900" alt="S-curve chart comparing cumulative planned value and earned value, with the gap at the status date">
+<img src="./assets/07scurve.png" width="900" alt="S-curve chart comparing cumulative planned value and earned value">
 
 ### 7. Site profile: one-site card with 27 costs, rank and milestone timeline
-<img src="./assets/10-site-profile.png" width="900" alt="Site profile card showing 27 cost components, investment rank, percentile and a milestone timeline">
+<img src="./assets/08site_profile.png" width="900" alt="Site profile card">
 
-### 8. Site performance scorecard (Power Query table)
-<img src="./assets/11-site-performance-scorecard.png" width="900" alt="Site_Performance_Scorecard table sorted worst-first with completion, late percentage, slip, SPI, RAG and BAC">
 
-### 9. Power Pivot relationship diagram
-<img src="./assets/12-power-pivot-relationships.png" width="900" alt="Power Pivot diagram of the star schema: dim_Site, dim_Milestone and dim_Calendar related to fct_Milestones">
+### 8. Power Pivot relationship diagram
+<img src="./assets/12power_pivot_relationship_diagram.png" width="900" alt="Power Pivot diagram of the star schema">
 
 ---
 
@@ -353,7 +319,7 @@ One row per site, sorted worst-first so the top rows form the recovery watch-lis
 | **Fixed FX rate of 1.16** (EUR → USD) | Budget in USD moves with FX; base case ignores volatility | The `Scenario` sheet stresses FX and contingency (Moderate / Severe) |
 | **On-time tolerance is a parameter** | "On-time %" depends on it (16.8% at 0 days vs 65.6% at 3 days) | Tolerance is on the `Control` sheet and shown in every punctuality KPI |
 | **Classic formulas only** (no dynamic arrays) | Longer formulas than modern equivalents | Chosen for Excel 2021 compatibility; `XLOOKUP` / `LET` refactor planned |
-| **Illustrative status date and dataset** | Results demonstrate the method, not a live operational position | See [License, data and security notes](#license-data-and-security-notes) |
+| **Illustrative status date and dataset** | Results demonstrate the method, not a live operational position | N/A |
 
 ---
 
@@ -392,32 +358,6 @@ One row per site, sorted worst-first so the top rows form the recovery watch-lis
 | VBA | Guarded refresh → validate → log → export cycle, sheet protection, input validation | [`vba/modTerranovaDashboard.bas`](./vba/modTerranovaDashboard.bas) |
 | Data quality | Six reconciliation checks to the cent, surfaced as a banner | `Control` sheet |
 | Scenario analysis | Base / Moderate / Severe FX and contingency engine | `Scenario` sheet |
-
----
-
-## Repository structure
-
-```
-terranova-executive-project-control-dashboard/
-├── README.md
-├── LICENSE
-├── workbook/            # Terranova_Executive_Project_Control_Dashboard.xlsm (also in Releases)
-├── vba/                 # modTerranovaDashboard.bas, Sheet_Control_Event_Handler.cls, ThisWorkbook.cls
-├── powerquery/          # Terranova_Queries.m
-├── dax/                 # Terranova_Measures.dax
-├── reports/             # sample province PDFs
-├── docs/                # methodology, KPI dictionary, data dictionary
-└── assets/              # screenshots, demo GIF
-```
-
----
-
-## License, data and security notes
-
-- **License:** code (VBA, M, DAX) is released under the [MIT License](./LICENSE). <!-- VERIFY: state the dataset terms that apply. -->
-- **Data:** the dataset is non-confidential and contains no employer data. Province names and EUR unit costs come from a realistic rollout dataset used for this portfolio case study; the status date of 31-Dec-2026 is illustrative.
-- **Macros:** the workbook is macro-enabled (`.xlsm`) and the VBA project is unsigned. All code is provided as plain text in [`/vba`](./vba) for review. The macros read and write only inside the workbook and the report output folder.
-- **Metadata:** personal document properties were removed before publication (File → Info → Inspect Document).
 
 ---
 
