@@ -31,6 +31,7 @@
 
 ## Table of contents
 
+- [Get the workbook and quick start](#get-the-workbook-and-quick-start)
 - [Project overview](#project-overview)
 - [Role and Responsibilities](#role-and-responsibilities)
 - [Challenge and design response](#challenge-and-design-response)
@@ -41,6 +42,23 @@
 - [Lessons learned and roadmap](#lessons-learned-and-roadmap)
 - [Skills and evidence](#skills-and-evidence)
 - [Contact](#contact)
+
+---
+## Get the workbook and quick start
+
+| | |
+|---|---|
+| **Download** | [`workbook/Terranova_Executive_Project_Control_Dashboard.xlsm`](./workbook/Terranova_Executive_Project_Control_Dashboard.xlsm) or the [latest release](https://github.com/YOUR-USERNAME/terranova-executive-project-control-dashboard/releases/latest) |
+| **Requirements** | Excel 2021 or Microsoft 365 for Windows (`MAXIFS` needs Excel 2019 or later); Power Pivot / Data Model enabled; macros enabled for the automation |
+| **Macro safety** | The VBA is unsigned. Every module is included as plain text in [`/vba`](./vba) so you can read it before enabling macros |
+
+**Quick start (about 3 minutes)**
+
+1. Download the `.xlsm` file and open it. Enable macros when prompted (File → Options → Trust Center), or review [`/vba`](./vba) first.
+2. Open the **`Control`** sheet and confirm the banner reads **MODEL OK** (six integrity checks).
+3. Go to **`Exec_Dashboard`** and change the **province filter**. Every tile, narrative and chart updates.
+4. Back on `Control`, change the **status date**, the **on-time tolerance** or the **scenario**, and compare the results.
+5. Press the **Update** button to run the full reporting cycle: refresh, validate, log, export PDFs.
 
 ---
 
