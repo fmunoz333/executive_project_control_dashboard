@@ -162,7 +162,7 @@ All figures are computed from the workbook at the **illustrative 31-Dec-2026 sta
 <img src="./assets/04exec_dashboard_Pontevedra.png" width="900" alt="Executive dashboard filtered to Pontevedra">
 
 ### 4. Cost analysis: province × domain matrix, Pareto of 27 components, Top-10 sites
-<img src="./assets/05cost-analysis.png" width="900" alt="Cost analysis sheet with a province by domain matrix, a Pareto chart of cost components and a Top-10 sites chart">
+<img src="./assets/05cost_analysis.png" width="900" alt="Cost analysis sheet with a province by domain matrix, a Pareto chart of cost components and a Top-10 sites chart">
 
 ### 5. Schedule analysis: milestone scorecard, lateness heat-map, slip distribution
 <img src="./assets/06schedule_analysis.png" width="900" alt="Schedule analysis sheet with a milestone scorecard">
