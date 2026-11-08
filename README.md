@@ -379,11 +379,25 @@ One row per site, sorted worst-first so the top rows form the recovery watch-lis
 
 ---
 
-## Contact
+## 👤 About the Author & Contact
 
-I build project controls, analytics and reporting automation for international teams. I am open to **remote consulting** in project management, data analytics and automation.
+**Fernando Muñoz** — Senior Data Analyst / Project & Program Management Consultant  
+*30+ Years Leading Technology & Infrastructure Programs ($84M+ Portfolios)*
 
-**Fernando Muñoz**: PMP · PSM I · Six Sigma Black Belt
+- **PMP® Certified** | **Scrum Master (PSM I)** | **Six Sigma Black Belt**
+- 🌐 **Interactive Portfolio:** [fmunoz333.github.io/fernando-munoz-cv](https://fmunoz333.github.io/fernando-munoz-cv/)
+- 💼 **Services & Consulting:** [fmunoz333.github.io/professional-services](https://fmunoz333.github.io/professional-services/)
+- 📧 **Email:** [fxmr.consult@gmail.com](mailto:fxmr.consult@gmail.com)
+- 🔗 **LinkedIn:** [linkedin.com/in/fernando-munoz-4737571](https://www.linkedin.com/in/fernando-munoz-4737571)
 
-- 📧 [fxmr.consult@gmail.com](mailto:fxmr.consult@gmail.com)
-- 💼 [LinkedIn](https://www.linkedin.com/in/YOUR-PROFILE)
+---
+
+<div align="center">
+
+**⭐ If you find this project showcase useful, please consider giving it a star! ⭐**
+
+Made by Fernando Muñoz
+
+[⬆ Back to Top](#-terranova-4g-100--project-management)
+
+</div>
