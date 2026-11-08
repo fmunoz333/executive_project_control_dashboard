@@ -398,6 +398,4 @@ One row per site, sorted worst-first so the top rows form the recovery watch-lis
 
 Made by Fernando Muñoz
 
-[⬆ Back to Top](#-terranova-4g-100--project-management)
-
 </div>
