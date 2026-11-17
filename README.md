@@ -1,4 +1,12 @@
-<h1 align="center">Executive Project Control Dashboard</h1>
+> **Portfolio classification:** Portfolio demonstration / hypothetical Terranova case study  
+> **Purpose:** Demonstrate Excel project controls, EVM-oriented analysis, Power Query, Power Pivot, DAX and VBA reporting automation.  
+> **Data / confidentiality:** Data extracte from the hypotetical Terranova database case and project-management case study.  
+> **Author:** Fernando Muñoz Rivadeneira · Quito, Ecuador  
+> **Related profile:** [Professional CV](https://fmunoz333.github.io/fernando-munoz-cv/) · [GitHub profile](https://github.com/fmunoz333)  
+> **Contact:** [fxmr.consult@gmail.com](mailto:fxmr.consult@gmail.com) · [LinkedIn](https://www.linkedin.com/in/fernando-munoz-4737571)
+
+---
+<h1 align="center">Terranova: Executive Project Control Dashboard</h1>
 
 <p align="center">
   <b>Earned value, cost, schedule and risk analytics for a 100-site rural 4G rollout</b><br>
@@ -379,23 +387,24 @@ One row per site, sorted worst-first so the top rows form the recovery watch-lis
 
 ---
 
-## 👤 About the Author & Contact
+## Contact
 
-**Fernando Muñoz** — Senior Data Analyst / Project & Program Management Consultant  
-*30+ Years Leading Technology & Infrastructure Programs ($84M+ Portfolios)*
+I build project controls, analytics and reporting automation for international teams. I am open to **remote consulting** in project management, data analytics and automation.
 
-- **PMP® Certified** | **Scrum Master (PSM I)** | **Six Sigma Black Belt**
-- 🌐 **Interactive Portfolio:** [fmunoz333.github.io/fernando-munoz-cv](https://fmunoz333.github.io/fernando-munoz-cv/)
-- 💼 **Services & Consulting:** [fmunoz333.github.io/professional-services](https://fmunoz333.github.io/professional-services/)
-- 📧 **Email:** [fxmr.consult@gmail.com](mailto:fxmr.consult@gmail.com)
-- 🔗 **LinkedIn:** [linkedin.com/in/fernando-munoz-4737571](https://www.linkedin.com/in/fernando-munoz-4737571)
+**Fernando Muñoz**: PMP · PSM I · Six Sigma Black Belt
+
+- 📧 [fxmr.consult@gmail.com](mailto:fxmr.consult@gmail.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/fernando-munoz-4737571)
 
 ---
 
-<div align="center">
+## Author & professional context
 
-**⭐ If you find this project showcase useful, please consider giving it a star! ⭐**
+**Fernando Muñoz Rivadeneira** — Data Analyst, Project & Program Manager, and Technology & Operations Leader with 30+ years of experience across telecommunications, IT infrastructure, PMO governance, operational improvement, risk management, and business intelligence.
 
-Made by Fernando Muñoz
+This repository is part of my professional portfolio. The classification and data provenance stated at the top of this README define how its results should be interpreted.
 
-</div>
+- **Professional CV:** https://fmunoz333.github.io/fernando-munoz-cv/
+- **Professional services:** https://fmunoz333.github.io/professional-services/
+- **LinkedIn:** https://www.linkedin.com/in/fernando-munoz-4737571
+- **Email:** fxmr.consult@gmail.com
