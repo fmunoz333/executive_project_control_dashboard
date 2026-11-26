@@ -6,7 +6,7 @@
 > **Contact:** [fxmr.consult@gmail.com](mailto:fxmr.consult@gmail.com) · [LinkedIn](https://www.linkedin.com/in/fernando-munoz-4737571)
 
 ---
-<h1 align="center">Terranova: Executive Project Control Dashboard</h1>
+<h1 align="center">Executive Project Control Dashboard</h1>
 
 <p align="center">
   <b>Earned value, cost, schedule and risk analytics for a 100-site rural 4G rollout</b><br>
